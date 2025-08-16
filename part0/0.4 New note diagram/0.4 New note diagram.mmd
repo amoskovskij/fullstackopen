@@ -7,33 +7,33 @@ sequenceDiagram
     deactivate browser
     activate server
     Note over server: The server creates a new note object, and adds it to an array called notes.
-    server->>browser: Responds with HTTP status code 302. This is a URL redirect.
+    server-->>browser: Responds with HTTP status code 302. This is a URL redirect.
     deactivate server
     activate browser
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes<br>content-type = text/html
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     deactivate browser
     activate server
-    server->>browser: Responds with HTTP status code 200. Request was successful.<br>HTML Document
+    server-->>browser: Responds with HTTP status code 200. Request was successful.<br>content-type = text/html<br>HTML Document
     deactivate server
     activate browser
     Note over browser: Browser reloads the Notes page.
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css<br>content-type = text/css
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
     deactivate browser
     activate server
-    server->>browser: Responds with HTTP status code 200. Request was successful.<br>Style sheet main.css file
+    server-->>browser: Responds with HTTP status code 200. Request was successful.<br>content-type = text/css<br>Style sheet main.css file
     deactivate server
     activate browser
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js<br>content-type = application/javascript
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
     deactivate browser
     activate server
-    server->>browser: Responds with HTTP status code 200. Request was successful.<br>JavaScript code main.js file
+    server-->>browser: Responds with HTTP status code 200. Request was successful.<br>content-type = application/javascript<br>JavaScript code main.js file
     deactivate server
     activate browser
     Note over browser: Browser executes the JavaScript code.
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json<br>content-type = application/json
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     deactivate browser
     activate server
-    server->>browser: Responds with HTTP status code 200. Request was successful.<br>Contents of the notes list in Json format
+    server-->>browser: Responds with HTTP status code 200. Request was successful.<br>content-type = application/json<br>Contents of the notes list in Json format
     deactivate server
     activate browser
     Note over browser, server: When the data has been fetched,<br>the browser executes an event handler,<br>which renders the notes to the page using the DOM-API.
