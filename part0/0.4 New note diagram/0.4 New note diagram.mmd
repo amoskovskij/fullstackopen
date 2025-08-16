@@ -3,11 +3,11 @@ sequenceDiagram
     participant server
     activate browser
     Note over browser, server: User write new note text in text field<br>and click the Save button
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note<br>content-type = text/html<br>Payload: note = "1234567890"
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note<br>content-type = application/x-www-form-urlencoded<br>Payload: note = "1234567890"
     deactivate browser
     activate server
     Note over server: The server creates a new note object, and adds it to an array called notes.
-    server-->>browser: Responds with HTTP status code 302. This is a URL redirect.
+    server-->>browser: Responds with HTTP status code 302. This is a URL redirect to<br>location = /exampleapp/notes
     deactivate server
     activate browser
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
